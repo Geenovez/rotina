@@ -276,3 +276,7 @@ h1{margin:0;font-size:24px;letter-spacing:.2px}
   .weekGrid{grid-template-columns: repeat(3, minmax(0, 1fr))}
   .row{flex-direction:column}
 }
+
+[hidden] { 
+  display: none !important; 
+}
