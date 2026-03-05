@@ -1,0 +1,278 @@
+:root{
+  --bg:#0b1220;
+  --card:#101a2e;
+  --card2:#0e1730;
+  --text:#e9eefc;
+  --muted:#a9b4d6;
+  --line:rgba(255,255,255,.08);
+  --accent:#5eead4;
+  --danger:#fb7185;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(94,234,212,.12), transparent 55%),
+              radial-gradient(900px 700px at 90% 0%, rgba(96,165,250,.10), transparent 50%),
+              var(--bg);
+  color:var(--text);
+}
+
+.header{
+  padding: 18px 16px 10px;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(to bottom, rgba(11,18,32,.95), rgba(11,18,32,.65));
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+}
+
+.title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+h1{margin:0;font-size:24px;letter-spacing:.2px}
+.subtitle{color:var(--muted);font-size:13px;margin-top:4px}
+
+.controls{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.chip{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius: 999px;
+  font-weight:600;
+  box-shadow:none;
+}
+.chip.secondary{
+  border-color: rgba(94,234,212,.35);
+}
+
+.container{
+  padding: 14px 16px 40px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.dayTabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding: 6px 2px 12px;
+}
+.dayTabs::-webkit-scrollbar{display:none}
+
+.tab{
+  flex: 0 0 auto;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius: 999px;
+  font-weight:700;
+  font-size: 13px;
+}
+.tab.active{
+  border-color: rgba(94,234,212,.55);
+  box-shadow: 0 0 0 3px rgba(94,234,212,.10);
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(16,26,46,.95), rgba(14,23,48,.92));
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+}
+
+.cardHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  padding: 4px 6px 10px;
+}
+.cardTitle{font-size:16px;font-weight:800}
+.cardHint{font-size:12px;color:var(--muted);margin-top:3px}
+.linkDanger{
+  background:transparent;border:none;color:var(--danger);
+  font-weight:700; padding:6px 8px;
+}
+
+.taskList{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+
+.task{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  border-radius: 16px;
+  padding: 10px 10px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.checkbox{
+  width: 20px; height:20px;
+  accent-color: var(--accent);
+}
+
+.taskMain{flex:1; min-width: 0}
+.taskTop{display:flex; gap:10px; align-items:center; justify-content:space-between}
+.taskTitle{
+  font-weight:800;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.taskMeta{color:var(--muted); font-size:12px; margin-top:3px}
+
+.taskDone .taskTitle{ text-decoration: line-through; color: rgba(233,238,252,.65) }
+.taskDone{ opacity:.90 }
+
+.badge{
+  font-size:12px;
+  border:1px solid var(--line);
+  padding:4px 8px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.iconBtn{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  width: 36px; height: 36px;
+  border-radius: 12px;
+  font-weight:900;
+}
+
+.dragHandle{
+  cursor: grab;
+  user-select:none;
+  width: 30px;
+  text-align:center;
+  opacity:.85;
+}
+.dragHandle.hidden{display:none}
+
+.empty{
+  padding: 18px 10px 8px;
+  color: var(--muted);
+}
+
+.footerNote{
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  opacity: .95;
+}
+
+/* Modal */
+.modalBackdrop{
+  position:fixed; inset:0;
+  background: rgba(0,0,0,.55);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding: 16px;
+  z-index: 50;
+}
+
+.modal{
+  width: 100%;
+  max-width: 720px;
+  background: linear-gradient(180deg, rgba(16,26,46,.98), rgba(14,23,48,.98));
+  border:1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+.modalHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 14px 14px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.modalHeader h2{margin:0;font-size:16px}
+
+.modalBody{padding: 12px 14px 14px; display:flex; flex-direction:column; gap:12px}
+
+.field{display:flex;flex-direction:column;gap:6px}
+.field span, .field legend{font-size:12px;color:var(--muted);font-weight:700}
+.field input, .field select{
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 12px;
+  color: var(--text);
+  outline:none;
+}
+.field input:focus, .field select:focus{
+  border-color: rgba(94,234,212,.55);
+  box-shadow: 0 0 0 3px rgba(94,234,212,.12);
+}
+
+.row{display:flex;gap:12px}
+.row .field{flex:1}
+
+.weekGrid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding-top: 4px;
+}
+.weekItem{
+  display:flex;align-items:center;gap:8px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  border-radius: 14px;
+  padding: 10px 10px;
+}
+.weekItem input{width:18px;height:18px;accent-color: var(--accent)}
+.weekItem label{font-weight:800}
+
+.modalActions{
+  display:flex; align-items:center; gap:10px; margin-top: 2px;
+}
+.spacer{flex:1}
+
+.btnPrimary,.btnGhost,.btnDanger{
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 900;
+  border:1px solid var(--line);
+}
+.btnPrimary{
+  background: rgba(94,234,212,.15);
+  border-color: rgba(94,234,212,.50);
+  color: var(--text);
+}
+.btnGhost{
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+}
+.btnDanger{
+  background: rgba(251,113,133,.14);
+  border-color: rgba(251,113,133,.55);
+  color: var(--text);
+}
+
+@media (max-width: 480px){
+  .weekGrid{grid-template-columns: repeat(3, minmax(0, 1fr))}
+  .row{flex-direction:column}
+}
