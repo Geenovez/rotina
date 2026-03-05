@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <title>Tarefas Diárias</title>
+</head>
+<body>
+  <header class="header">
+    <div class="title">
+      <h1>Tarefas</h1>
+      <div class="subtitle" id="todayLabel"></div>
+    </div>
+
+    <div class="controls">
+      <button class="chip" id="toggleSortBtn" type="button">Ordenar: Horário</button>
+      <button class="chip secondary" id="addTaskBtn" type="button">+ Nova</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="dayTabs" id="dayTabs"></section>
+
+    <section class="card">
+      <div class="cardHeader">
+        <div>
+          <div class="cardTitle" id="dayTitle">Hoje</div>
+          <div class="cardHint" id="dayHint"></div>
+        </div>
+        <button class="linkDanger" id="clearTodayBtn" type="button">Limpar “feito hoje”</button>
+      </div>
+
+      <ul class="taskList" id="taskList"></ul>
+
+      <div class="empty" id="emptyState" hidden>
+        Nenhuma tarefa para este dia. Clique em <b>+ Nova</b>.
+      </div>
+    </section>
+
+    <section class="footerNote">
+      Dados ficam salvos neste iPhone (localStorage). Se o Safari limpar dados do site, você perde as tarefas.
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modalBackdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modalHeader">
+        <h2 id="modalTitle">Nova tarefa</h2>
+        <button class="iconBtn" id="closeModalBtn" aria-label="Fechar" type="button">✕</button>
+      </div>
+
+      <form id="taskForm" class="modalBody">
+        <input type="hidden" id="taskId" />
+
+        <label class="field">
+          <span>Título</span>
+          <input id="taskTitle" type="text" placeholder="Ex: Treinar, Tomar creatina..." required maxlength="80" />
+        </label>
+
+        <div class="row">
+          <label class="field">
+            <span>Horário (opcional)</span>
+            <input id="taskTime" type="time" />
+          </label>
+
+          <label class="field">
+            <span>Ativa</span>
+            <select id="taskEnabled">
+              <option value="true" selected>Sim</option>
+              <option value="false">Não</option>
+            </select>
+          </label>
+        </div>
+
+        <fieldset class="field">
+          <legend>Dias da semana</legend>
+          <div class="weekGrid" id="weekGrid"></div>
+        </fieldset>
+
+        <div class="modalActions">
+          <button class="btnDanger" id="deleteBtn" type="button" hidden>Excluir</button>
+          <div class="spacer"></div>
+          <button class="btnGhost" id="cancelBtn" type="button">Cancelar</button>
+          <button class="btnPrimary" type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
